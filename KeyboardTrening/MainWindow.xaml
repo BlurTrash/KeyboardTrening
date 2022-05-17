@@ -1,0 +1,370 @@
+﻿<Window x:Class="KeyboardTrening.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:KeyboardTrening"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodel="clr-namespace:KeyboardTrening.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:KeyboardViewModel}"
+        mc:Ignorable="d"
+        Title="Keyboard Traning"
+        MinWidth="1000" MinHeight="600"     
+        WindowStartupLocation="CenterScreen">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="PreviewKeyDown">
+            <i:InvokeCommandAction 
+                Command="{Binding PreviewKDCommand}"
+                PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+        <i:EventTrigger EventName="PreviewKeyUp">
+            <i:InvokeCommandAction 
+                Command="{Binding PreviewKUCommand}"
+                PassEventArgsToCommand="True"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+    <Window.Resources>
+        <SolidColorBrush x:Key="Button.Checked.Background" Color="Red"/>
+        <SolidColorBrush x:Key="Button.Static.Background" Color="LightBlue"/>
+        <SolidColorBrush x:Key="Button.Static.Border" Color="#FF707070"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Background" Color="#FFBEE6FD"/>
+        <SolidColorBrush x:Key="Button.MouseOver.Border" Color="#FF3C7FB1"/>
+        <SolidColorBrush x:Key="Button.Pressed.Background" Color="#FFC4E5F6"/>
+        <SolidColorBrush x:Key="Button.Pressed.Border" Color="#FF2C628B"/>
+        <SolidColorBrush x:Key="Button.Disabled.Background" Color="#FFF4F4F4"/>
+        <SolidColorBrush x:Key="Button.Disabled.Border" Color="#FFADB2B5"/>
+        <SolidColorBrush x:Key="Button.Disabled.Foreground" Color="#FF838383"/>
+        <ControlTemplate TargetType="Button" x:Key="btnEclipse">
+            <Border x:Name="border"
+                    CornerRadius="10"
+                    BorderBrush="Black"
+                    BorderThickness="2"
+                    Background="{TemplateBinding Background}"
+                    Height="{TemplateBinding Height}"
+                    Width="{TemplateBinding Width}" >
+                <ContentControl Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Content="{TemplateBinding Content}" />
+            </Border>
+            <ControlTemplate.Triggers>
+                <Trigger Property="Button.IsDefaulted" Value="true">
+                    <Setter Property="BorderBrush" TargetName="border" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.MouseOver.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.MouseOver.Border}"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="true">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Pressed.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Pressed.Border}"/>
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="false">
+                    <Setter Property="Background" TargetName="border" Value="{StaticResource Button.Disabled.Background}"/>
+                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource Button.Disabled.Border}"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <Style TargetType="Button">
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="20"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnSystem">
+            <Setter Property="Background" Value="#FFB5B5B5"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnRed">
+            <Setter Property="Background" Value="#FFF07795"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnYellow">
+            <Setter Property="Background" Value="#FFE6F077"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnGreen">
+            <Setter Property="Background" Value="#FF7FF077"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnBlue">
+            <Setter Property="Background" Value="#FF77BEF0"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+        <Style TargetType="Button" x:Key="BtnPurple">
+            <Setter Property="Background" Value="#FFDB77F0"></Setter>
+            <Setter Property="Margin" Value="2"></Setter>
+            <Setter Property="FontSize" Value="30"></Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <!--grid block 0.-->
+        <Grid Grid.Row="0" Grid.ColumnSpan="15" Margin="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <WrapPanel Grid.Column="0" Grid.Row="0">
+                <TextBlock FontSize="18" Text="Speed: "/>
+                <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding SpeedCount}" x:Name="speedCountLabel"/>
+                <TextBlock FontSize="18" Text=" chars/min"/>
+            </WrapPanel>
+            <WrapPanel Grid.Column="1" Grid.Row="0">
+                <TextBlock FontSize="18" Text="Fails: "/>
+                <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding FailsCount}" x:Name="failsCountLabel"/>
+            </WrapPanel>
+            <Grid Grid.Column="2" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="18" Text="Difficulty: "/>
+                <TextBlock Grid.Column="1" FontSize="18" FontWeight="Bold" Text="{Binding Difficulty}" x:Name="difficultyLabel"/>
+                <Slider Grid.Column="2" Margin="15,0,15,0" IsEnabled="{Binding SliderIsEnabled}" VerticalAlignment="Center" Minimum="1" Maximum="47" Value="5" Name="Slider">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ValueChanged">
+                            <i:InvokeCommandAction Command="{Binding SliderCommand}" CommandParameter="{Binding ElementName=Slider}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Slider>
+            </Grid>
+            <Grid Grid.Column="3" Grid.Row="0">
+                <CheckBox FontSize="18" VerticalContentAlignment="Center" IsEnabled="{Binding ChBoxSensIsEnabled}" Name="CheckBoxSensitive" IsChecked="{Binding IsCaseSensitive}">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="Checked">
+                            <i:InvokeCommandAction Command="{Binding CheckCommand}" CommandParameter="{Binding ElementName=Slider}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                        <i:EventTrigger EventName="Unchecked">
+                            <i:InvokeCommandAction Command="{Binding CheckCommand}" CommandParameter="{Binding ElementName=Slider}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers> Case Sensitive
+                </CheckBox>
+            </Grid>
+            <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                    <ColumnDefinition Width="73*" ></ColumnDefinition>
+                    <ColumnDefinition Width="310*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" FontSize="18" Text="String Length: "/>
+                <TextBlock FontSize="18" FontWeight="Bold" Text="{Binding StrLen}" x:Name="stringLengthLabel" Margin="115,0,0,0"/>
+                <Slider Grid.Column="2" Margin="15,0,15,0" IsEnabled="true" VerticalAlignment="Center" Minimum="1" Maximum="200" Value="70" Name="StrLenSlider" Grid.ColumnSpan="2">
+                    <i:Interaction.Triggers>
+                        <i:EventTrigger EventName="ValueChanged">
+                            <i:InvokeCommandAction Command="{Binding StrLenSliderCommand}" CommandParameter="{Binding ElementName=StrLenSlider}"></i:InvokeCommandAction>
+                        </i:EventTrigger>
+                    </i:Interaction.Triggers>
+                </Slider>
+            </Grid>
+            <Button Grid.Column="2" Grid.Row="2" Content="Start" Name="Start" IsEnabled="{Binding IsStartBtn}"  Command="{Binding ClickStartCommand}"></Button>
+            <Button Grid.Column="3" Grid.Row="2"  Content="Stop" Name="Stop" IsEnabled="{Binding IsStopBtn}" Command="{Binding ClickStopCommand}"></Button>
+            <Button Grid.Column="0" Grid.Row="2" Content="Load File" Name="LoadFile" IsEnabled="{Binding IsLoadBtn}" Command="{Binding ClickLoadCommand}"></Button>
+            <Button Grid.Column="1" Grid.Row="2"  Content="Clear" Name="Clear" IsEnabled="{Binding IsClearBtn}" Command="{Binding ClickClearCommand}"></Button>
+        </Grid>
+        <!--grid block 1.-->
+        <Grid Grid.Row="1" Grid.ColumnSpan="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+            </Grid.RowDefinitions>
+            <TextBox Grid.Row="0"  FontSize="18" AcceptsReturn="True" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" IsReadOnly="True" Name="programTextBox" IsEnabled="True" Background="LightBlue" BorderBrush="LightBlue" FontFamily="Roboto" Text="{Binding ProgrammTBText}"></TextBox>
+            <TextBox Grid.Row="1" FontSize="18" AcceptsReturn="True" TextWrapping="Wrap" IsReadOnly="{Binding UserTBIsReadOnly}" Name="userTextBox"  IsEnabled="{Binding UserTBIsEnabled}" Background="LightBlue" BorderBrush="LightBlue" FontFamily="Roboto" Text="{Binding UserTBText}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="TextChanged">
+                        <i:InvokeCommandAction Command="{Binding TextBoxCommandChanged}" CommandParameter="{Binding ElementName=userTextBox}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </TextBox>
+        </Grid>
+        <!--grid block 2. buttons line-->
+        <Grid Grid.Row="2" Grid.ColumnSpan="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="`" Name="Oem3" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}"/>
+            <Button Grid.Column="1" Content="1" x:Name="D1" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="2" Content="2" Name="D2" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="3" Content="3" Name="D3" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="4" Content="4" Name="D4" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="5" Content="5" Name="D5" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="6" Content="6" Name="D6" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="7" Content="7" Name="D7" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="8" Content="8" Name="D8" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="9" Content="9" Name="D9" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="10" Content="0" Name="D0" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="11" Content="-" Name="OemMinus" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="12" Content="=" Name="OemPlus" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="13" Grid.ColumnSpan="2" Content="Backspace" Name="Back" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+        </Grid>
+        <!--grid block 3. buttons line-->
+        <Grid Grid.Row="3" Grid.ColumnSpan="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Tab" Name="Tab" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Row="3" Grid.Column="2" Content="q" Name="Q" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="3" Content="w" Name="W" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="4" Content="e" Name="E" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="5" Content="r" Name="R" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="6" Content="t" Name="T" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="7" Content="y" Name="Y" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="8" Content="u" Name="U" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="9" Content="i" Name="I" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="10" Content="o" Name="O" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="11" Content="p" Name="P" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="12" Content="[" Name="OemOpenBrackets" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="13" Content="]" Name="Oem6" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="3" Grid.Column="14" Content="\" Name="Oem5" Grid.ColumnSpan="2" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+        </Grid>
+        <!--grid block 4. buttons line-->
+        <Grid Grid.Row="4" Grid.ColumnSpan="15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Name="Capital" Content="Caps Lock" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Row="4" Grid.Column="2" Content="a" Name="A" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="3" Content="s" Name="S" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="4" Content="d" Name="D" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="5" Content="f" Name="F" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Row="4" Grid.Column="6" Content="g" Name="G" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="7" Content="h" Name="H" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="8" Content="j" Name="J" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="9" Content="k" Name="K" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="10" Content="l" Name="L" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="11" Content=";" Name="Oem1" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="12" Content="'" Name="OemQuotes" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Row="4" Grid.Column="13" Content="Enter" Name="Return" Grid.ColumnSpan="2" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+        </Grid>
+        <!--grid block 5. buttons line-->
+        <Grid Grid.Row="5" Grid.ColumnSpan="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="32"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Grid.ColumnSpan="3" Content="Shift" Name="LeftShift" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="3" Content="z" Name="Z" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="4" Content="x" Name="X" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="5" Content="c" Name="C" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="6" Content="v" Name="V" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="7" Content="b" Name="B" Style="{StaticResource BtnBlue}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="8" Content="n" Name="N" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="9" Content="m" Name="M" Style="{StaticResource BtnPurple}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="10" Content="," Name="OemComma" Style="{StaticResource BtnRed}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="11" Content="." Name="OemPeriod" Style="{StaticResource BtnYellow}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="12" Content="/" Name="OemQuestion" Style="{StaticResource BtnGreen}" Template="{StaticResource btnEclipse}" ></Button>
+            <Button Grid.Column="13" Content="Shift" Name="RightShift" Grid.ColumnSpan="3" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"/>
+        </Grid>
+        <!--grid block 6. buttons line-->
+        <Grid Grid.Row="6" Grid.ColumnSpan="16">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="395"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition ></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="Ctrl" Name="LeftCtrl" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="1" Content="Win" Name="LWin" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="2" Content="Alt" Name="LAlt" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="3" Content="Space" Background="#E5BB72" Name="Space" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="4" Content="Alt" Name="RAlt" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="5" Content="Win" Name="RWin" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+            <Button Grid.Column="6" Content="Ctrl" Name="RightCtrl" Style="{StaticResource BtnSystem}" Template="{StaticResource btnEclipse}"></Button>
+        </Grid>
+    </Grid>
+</Window>
