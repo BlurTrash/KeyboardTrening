@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:KeyboardTrening"
         xmlns:i="http://schemas.microsoft.com/xaml/behaviors" xmlns:viewmodel="clr-namespace:KeyboardTrening.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:KeyboardViewModel}"
         mc:Ignorable="d"
-        Title="Keyboard Traning"
+        Title="Keyboard Trening"
         MinWidth="1000" MinHeight="600"     
         WindowStartupLocation="CenterScreen">
     <i:Interaction.Triggers>
